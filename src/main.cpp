@@ -11,7 +11,7 @@ int main() {
     prefix start;
     start.push_back(static_cast<std::string>("worth"));
     start.push_back(static_cast<std::string>("it"));
-    std::string output = generateText(&statetab, &start);
+    std::string output = generateText(&statetab, start);
     std::ofstream outputFile("output.txt");
     outputFile << output;
     return 0;

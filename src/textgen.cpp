@@ -39,20 +39,26 @@ void fulfilStatetab(std::string fileName,
 }
 
 std::string generateText(std::map<prefix, std::vector<std::string>>* statetab,
-                        prefix* start) {
+                        prefix& start) {
     std::string str;
     unsigned count = 0;
-    while ((count != MAXGEN) || ((*statetab)[(*start)].empty())) {
+    while ((count != MAXGEN) || ((*statetab)[start].empty())) {
         if (str.empty()) {
-            for (size_t i = 0; i < (*start).size() - 1; ++i) {
-                str += (*start)[i] + " ";
-            } 
-            str += (*start)[(*start).size() - 1];
+            for (auto it = start.begin(); it != start.end(); ++it) {
+                if (it != start.end() - 1) {
+                    str += *it + " ";
+                } else {
+                    str += *it;
+                }
+            }
         }
-        unsigned curRand = std::rand()%(*statetab)[(*start)].size();
-        str += " " + (*statetab)[(*start)][curRand];
-        (*start).pop_front();
-        (*start).push_back((*statetab)[(*start)][curRand]);
+        unsigned curRand = std::rand()%(*statetab)[start].size();
+        str += " " + (*statetab)[start][curRand];
+        start.push_back((*statetab)[start][curRand]);
+        start.pop_front();
+        if (!(count%7) && count) {
+            str += "\n";
+        }
         ++count;
     }
     return str;
