@@ -13,7 +13,7 @@ int main() {
         }
         std::cout << " ]  <--> { ";
         for (auto it2 : it->second) {
-            std::cout << it2 << " ";
+            std::cout << it2 << " | ";
         }
         std::cout << " }" << std::endl;
     }

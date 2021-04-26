@@ -20,7 +20,16 @@ void fulfilStatetab(std::string fileName,
             str.clear();
         } else {
                 inputFile >> str;
-                (*statetab)[prefixVar].push_back(str);
+                bool substrExists = false;
+                for (size_t i = 0; i < (*statetab)[prefixVar].size(); ++i) {
+                    if ((*statetab)[prefixVar][i] == str) {
+                        substrExists = true;
+                        break;
+                    }
+                }
+                if (!substrExists) {
+                    (*statetab)[prefixVar].push_back(str);
+                }
                 prefixVar.pop_front();
                 prefixVar.push_back(str);
                 str.clear();
