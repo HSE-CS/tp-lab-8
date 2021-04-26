@@ -39,10 +39,23 @@ void fulfilStatetab(std::string fileName,
 }
 
 std::string generateText(std::map<prefix, std::vector<std::string>>* statetab,
-                        prefix start) {
-    std::string s;
-    
-    return s;
+                        prefix* start) {
+    std::string str;
+    unsigned count = 0;
+    while ((count != MAXGEN) || ((*statetab)[(*start)].empty())) {
+        if (str.empty()) {
+            for (size_t i = 0; i < (*start).size() - 1; ++i) {
+                str += (*start)[i] + " ";
+            } 
+            str += (*start)[(*start).size() - 1];
+        }
+        unsigned curRand = std::rand()%(*statetab)[(*start)].size();
+        str += " " + (*statetab)[(*start)][curRand];
+        (*start).pop_front();
+        (*start).push_back((*statetab)[(*start)][curRand]);
+        ++count;
+    }
+    return str;
 }
 
 void printMap(std::map<prefix, std::vector<std::string>>* statetab) {

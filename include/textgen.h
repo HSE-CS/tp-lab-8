@@ -9,6 +9,8 @@
 #include <typeinfo>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 typedef std::deque<std::string> prefix;  //  prefix deque
 
@@ -19,6 +21,6 @@ void fulfilStatetab(std::string fileName,
                     std::map<prefix, std::vector<std::string>>* statetab);
 
 std::string generateText(std::map<prefix, std::vector<std::string>>* statetab,
-                        prefix start);
+                        prefix* start);
 void printMap(std::map<prefix, std::vector<std::string>>* statetab);
 #endif  //  INCLUDE_TEXTGEN_H_
