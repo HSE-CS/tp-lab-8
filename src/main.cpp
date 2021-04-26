@@ -6,16 +6,6 @@ int main() {
     std::string filename;
     std::cin >> filename;
     fulfilStatetab(filename, &statetab);
-    for (auto it = statetab.begin(); it != statetab.end(); ++it) {
-        std::cout << "[ ";
-        for (auto it1 : it->first) {
-            std::cout << it1 << " ";
-        }
-        std::cout << " ]  <--> { ";
-        for (auto it2 : it->second) {
-            std::cout << it2 << " | ";
-        }
-        std::cout << " }" << std::endl;
-    }
+    printMap(&statetab);
     return 0;
 }

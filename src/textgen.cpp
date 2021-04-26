@@ -41,6 +41,20 @@ void fulfilStatetab(std::string fileName,
 std::string generateText(std::map<prefix, std::vector<std::string>>* statetab,
                         prefix start) {
     std::string s;
-
+    
     return s;
+}
+
+void printMap(std::map<prefix, std::vector<std::string>>* statetab) {
+        for (auto it = (*statetab).begin(); it != (*statetab).end(); ++it) {
+        std::cout << "[ ";
+        for (auto it1 : it->first) {
+            std::cout << it1 << " ";
+        }
+        std::cout << " ]  <--> { ";
+        for (auto it2 : it->second) {
+            std::cout << it2 << " | ";
+        }
+        std::cout << " }" << std::endl;
+    }
 }

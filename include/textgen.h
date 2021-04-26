@@ -20,4 +20,5 @@ void fulfilStatetab(std::string fileName,
 
 std::string generateText(std::map<prefix, std::vector<std::string>>* statetab,
                         prefix start);
+void printMap(std::map<prefix, std::vector<std::string>>* statetab);
 #endif  //  INCLUDE_TEXTGEN_H_
