@@ -41,8 +41,8 @@ void fulfilStatetab(std::string fileName,
 std::string generateText(std::map<prefix, std::vector<std::string>>* statetab,
                         prefix& start) {
     std::string str;
-    unsigned count = 0;
-    while ((count != MAXGEN) || ((*statetab)[start].empty())) {
+    unsigned count = NPREF;
+    while ((count <= MAXGEN) && (!((*statetab)[start].empty()))) {
         if (str.empty()) {
             for (auto it = start.begin(); it != start.end(); ++it) {
                 if (it != start.end() - 1) {
