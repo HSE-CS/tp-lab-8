@@ -6,9 +6,10 @@
 #include <iostream>
 #include <list>
 #include <iterator>
+#include "textgen.h"
 
 
-typedef std::deque<std::string> prefix;
+
 
 
 
@@ -92,84 +93,16 @@ std::string pref_by_suf(std::string a, std::map<prefix, std::vector<std::string>
 
 
 int main() {
-    const int NPREF = 1; // количество слов в префиксе
-    const int MAXGEN = 20; //объем текста на выходе
-    std::map<prefix, std::vector<std::string>> statetab; // префикс-суффиксы
-
-    std::list< std::map<prefix, std::vector<std::string>>> prefix_list;
     const char* link = "text.txt";
-
-    std::ifstream in;
-    in.open(link, std::ios::in);
-
-    std::vector<std::string> words;
-    std::string* word = new std::string;
-    char ch;
-    if (!in) {
-        std::cout << "I can't open file!";
-        return 1;
-    }
-    while (in) {
-        in.get(ch);
-        if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\0' || ch == '\r') {
-            if (word->size() == 0) {
-                continue;
-            } 
-            else {
-                std::string word_a = *word;
-                word_a += '\0';
-                words.push_back(word_a);
-                word->clear();
-                word->resize(0);
-            }
-        } else {
-            *word += ch;
-        }
-    }
-    
-    in.close();
-
-    prefix m_pref; 
-    std::vector<std::string> suf;
+    TextParser demo(link);
+    demo.Parsing();
+    std::vector<std::string> words = demo.GetWords();
+    std::vector<std::string> wordx;
+    Linker demo_Linker(6, words);
+    demo_Linker.Link();
+    std::map<prefix, std::vector<std::string>> statetab = demo_Linker.getTable();
+    const int MAXGEN = 20; //объем текста на выходе
     std::map<prefix, std::vector<std::string>>::iterator it = statetab.begin();
-
-    size_t num_words = words.size();
-    for (auto current_word : words) {
-        if (m_pref.empty()) {
-            m_pref.push_back(current_word);
-            continue;
-        }
-
-        it = statetab.begin();
-        int flag = 0;
-        while (it != statetab.end()) {
-            prefix pref_chek = it->first;
-            std::deque<std::string>::iterator it_pr = pref_chek.begin();
-            std::deque<std::string>::iterator it_pr_n = m_pref.begin();
-            int count = 0;
-            while (it_pr != pref_chek.end()) {
-                if ((*it_pr) == *(it_pr_n)) {
-                    count++;
-                }
-                it_pr++;
-                it_pr_n++;
-            }
-            if (count == pref_chek.size()) {
-                it->second.push_back(current_word);
-                flag = 1;
-                break;
-            };
-            it++;
-        }
-        if (flag == 0) {
-            suf.push_back(current_word);
-            statetab[m_pref] = suf;
-            suf.clear();
-            m_pref.clear();
-            m_pref.push_back(current_word);
-        }
-    }
-
     it = statetab.begin();
     int count = 0;
     for (it; it != statetab.end(); it++) {
