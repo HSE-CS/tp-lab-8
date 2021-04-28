@@ -89,3 +89,92 @@ void Linker::Link() {
 std::map<prefix, std::vector<std::string>> Linker::getTable() {
     return statetab;
 }
+
+void Generator::generate() {
+    int num_words = pref_len;
+    std::deque<std::string> current_pref = this->random_pref();
+    for (auto word : current_pref)
+        result += word + ' ';
+    std::string current_word;
+    while (num_words < this->words_num) {
+        current_word = this->find_suf_for_pref(current_pref);
+        if (current_word == "") {
+            current_pref = this->random_pref();
+            current_word = this->find_suf_for_pref(current_pref);
+        }
+        result += current_word;
+        num_words++;
+        current_word.pop_back();
+        current_pref.pop_front();
+        current_pref.push_back(current_word);
+    }
+};
+
+std::string Generator::find_suf_for_pref(std::deque<std::string> pref) {
+    std::map<prefix, std::vector<std::string>>::iterator it = statetab.begin();
+    while (it != statetab.end()) {
+        prefix pref_chek = it->first;
+        std::deque<std::string>::iterator it_pref_from_table = pref_chek.begin();
+        std::deque<std::string>::iterator it_pref_from_vect = pref.begin();
+        int count = 0;
+        while (it_pref_from_table != pref_chek.end()) {
+            if ((*it_pref_from_table) == *(it_pref_from_vect)) {
+                it_pref_from_table++;
+                it_pref_from_vect++;
+            }
+            else {
+                count++;
+                break;
+            }
+        }
+        if (count == 0) {
+            std::vector<std::string> suf = it->second;
+            std::string result = "";
+            result += suf[rand() % suf.size()] + " ";
+            return result;
+        }
+        it++;
+    }
+        
+    std::string result = "";
+    return result;
+}
+
+std::deque<std::string> Generator::random_pref() {
+    std::map<prefix, std::vector<std::string>>::iterator it;
+    int pos_start = rand() % size;
+    int count = 0;
+    it = statetab.begin();
+    while (count != pos_start && it != statetab.end()) {
+        count++;
+        it++;
+    }
+
+    prefix pref_chek = it->first;
+    std::deque<std::string>::iterator it_pr = pref_chek.begin();
+    std::deque<std::string> result;
+    for (auto word : pref_chek) {
+        result.push_back(word);
+    }
+    return result;
+}
+
+std::string Generator::getResult() {
+    return result;
+};
+
+MarckovChair::MarckovChair(std::vector<std::string> words, int pref_len, int num_words) {
+    Linker linker_for_chair(pref_len, words);
+    Generator generator_for_chair(pref_len, num_words, linker_for_chair.getTable());
+    this->result = generator_for_chair.getResult();
+}
+MarckovChair::MarckovChair(const char* link, int pref_len, int num_words) {
+    TextParser parser_for_chair(link);
+    Linker linker_for_chair(pref_len, parser_for_chair.GetWords());
+    Generator generator_for_chair(pref_len, num_words, linker_for_chair.getTable());
+    this->result = generator_for_chair.getResult();
+}
+
+std::string MarckovChair::getResult() {
+    return result;
+}
