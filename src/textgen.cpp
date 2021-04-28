@@ -1,8 +1,8 @@
 //  Copyright 2021 Nikita Naumov
 #include "../include/textgen.h"
 
-void fulfilStatetab(std::string fileName, 
-                    std::map<prefix, std::vector<std::string>>* statetab) {
+void fulfilStatetab(std::map<prefix, std::vector<std::string>>* statetab,
+                    std::string fileName) {
     std::ifstream inputFile(fileName);
     prefix prefixVar;
     std::string str;

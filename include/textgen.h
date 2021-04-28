@@ -17,10 +17,11 @@ typedef std::deque<std::string> prefix;  //  prefix deque
 const int NPREF = 2;  //  amount of words in prefix
 const int MAXGEN = 1000;  //  generated text volume
 
-void fulfilStatetab(std::string fileName, 
-                    std::map<prefix, std::vector<std::string>>* statetab);
+void fulfilStatetab(std::map<prefix, std::vector<std::string>>* statetab,
+                    std::string fileName);
 
 std::string generateText(std::map<prefix, std::vector<std::string>>* statetab,
                         prefix& start);
+
 void printMap(std::map<prefix, std::vector<std::string>>* statetab);
 #endif  //  INCLUDE_TEXTGEN_H_

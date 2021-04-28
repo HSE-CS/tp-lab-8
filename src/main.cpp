@@ -5,12 +5,19 @@ int main() {
     srand(time(NULL));
     std::map<prefix, std::vector<std::string>> statetab;  //  current statetab
     std::string filename;
+    std::cout << "Enter the source file name" << std::endl;
     std::cin >> filename;
-    fulfilStatetab(filename, &statetab);
+    fulfilStatetab(&statetab, filename);
     printMap(&statetab);
     prefix start;
-    start.push_back(static_cast<std::string>("worth"));
-    start.push_back(static_cast<std::string>("it"));
+    std::cout << "Enter the start of generation (" << NPREF << " word(s))"
+                                                            << std::endl;
+    for (size_t i = 0; i < NPREF; ++i) {
+        std::string str;
+        std::cin >> str;
+        start.push_back(str);
+        str.clear();
+    }
     std::string output = generateText(&statetab, start);
     std::ofstream outputFile("output.txt");
     outputFile << output;
