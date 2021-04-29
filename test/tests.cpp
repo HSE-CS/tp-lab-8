@@ -15,7 +15,7 @@ TEST(textgen, test1) {
 TEST(textgen, test2) {
     std::map<prefix, std::vector<std::string>> statetab;
     prefix prefVar = {"your", "waist"};
-    fulfilStatetab(&statetab, "../src/text.txt");
+    fulfilStatetab(&statetab, "text.txt");
     bool isExist = true;
     if (statetab.find(prefVar) == statetab.end()) {
         isExist = false;
@@ -26,7 +26,7 @@ TEST(textgen, test2) {
 TEST(textgen, test3) {
     std::map<prefix, std::vector<std::string>> statetab;
     prefix prefVar = {"I", "waist"};
-    fulfilStatetab(&statetab, "../src/text.txt");
+    fulfilStatetab(&statetab, "text.txt");
     bool isExist = true;
     if (statetab.find(prefVar) == statetab.end()) {
         isExist = false;
@@ -36,7 +36,7 @@ TEST(textgen, test3) {
 
 TEST(textgen, test4) {
     std::map<prefix, std::vector<std::string>> statetab;
-    fulfilStatetab(&statetab, "../src/text.txt");
+    fulfilStatetab(&statetab, "text.txt");
     prefix prefVar = {"your", "waist"};
     std::string text = generateText(&statetab, prefVar);
     EXPECT_EQ(true, text.size() == 1000);
@@ -45,7 +45,7 @@ TEST(textgen, test4) {
 TEST(textgen, test5) {
     std::map<prefix, std::vector<std::string>> statetab;
     prefix prefVar = {"your", "waist"};
-    fulfilStatetab(&statetab, "../src/text.txt");
+    fulfilStatetab(&statetab, "text.txt");
     auto pos = statetab.find(prefVar);
     EXPECT_NE(statetab.end(), pos);
 }
