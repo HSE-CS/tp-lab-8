@@ -19,20 +19,20 @@ void fulfilStatetab(std::map<prefix, std::vector<std::string>>* statetab,
             prefixVar.push_back(str);
             str.clear();
         } else {
-                inputFile >> str;
-                bool substrExists = false;
-                for (size_t i = 0; i < (*statetab)[prefixVar].size(); ++i) {
-                    if ((*statetab)[prefixVar][i] == str) {
-                        substrExists = true;
-                        break;
-                    }
+            inputFile >> str;
+            bool substrExists = false;
+            for (size_t i = 0; i < (*statetab)[prefixVar].size(); ++i) {
+                if ((*statetab)[prefixVar][i] == str) {
+                    substrExists = true;
+                    break;
                 }
-                if (!substrExists) {
-                    (*statetab)[prefixVar].push_back(str);
-                }
-                prefixVar.pop_front();
-                prefixVar.push_back(str);
-                str.clear();
+            }
+            if (!substrExists) {
+                (*statetab)[prefixVar].push_back(str);
+            }
+            prefixVar.pop_front();
+            prefixVar.push_back(str);
+            str.clear();
         }
     }
     inputFile.close();
