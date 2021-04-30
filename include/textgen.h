@@ -9,7 +9,8 @@
 #include <map>
 #include <sstream>
 #include <fstream>
-#include <random> 
+#include <random>
+#include <iterator>
 
 
 const int NPREF = 2;  //кол-во слов в префиксе
