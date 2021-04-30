@@ -136,5 +136,6 @@ TEST(set5, test1) {
     prefix pref_chek = it->first;
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 5, test_linker.getTable());
+    std::string result = test_gen.getResult();
     EXPECT_EQ(result, "Hi this is good job");
 }
