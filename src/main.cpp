@@ -19,6 +19,7 @@ int main() {
         str.clear();
     }
     std::string output = generateText(&statetab, start);
+    std::cout << output.size() << std::endl;
     std::ofstream outputFile("output.txt");
     outputFile << output;
     return 0;
