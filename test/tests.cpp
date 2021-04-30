@@ -3,18 +3,18 @@
 #include "textgen.h"
 
 TEST(GenTests, test1) {
-    std::string path = "text.txt";
+    std::string path = "include/text.txt";
     std::map<std::deque<std::string>, std::vector<std::string>> statetab = createPrefix(path);
     std::vector<std::deque<std::string>> k;
     k.reserve(statetab.size());
     for (auto const& key: statetab) {
         k.push_back(key.first);
     }
-    EXPECT_EQ(3, k.at(1).size());
+    EXPECT_EQ(2, k.at(1).size());
 }
 
 TEST(GenTests, test2) {
-    std::string path = "text.txt";
+    std::string path = "include/text.txt";
     std::map<std::deque<std::string>, std::vector<std::string>> statetab = createPrefix(path);
     std::deque<std::string> pr{"mutual", "funds"};
     
@@ -22,7 +22,7 @@ TEST(GenTests, test2) {
 }
 
 TEST(GenTests, test3) {
-    std::string path = "text.txt";
+    std::string path = "include/text.txt";
     std::map<std::deque<std::string>, std::vector<std::string>> statetab = createPrefix(path);
     std::deque<std::string> pr{"on", "the"};
 
@@ -30,7 +30,7 @@ TEST(GenTests, test3) {
 }
 
 TEST(GenTests, test4) {
-    std::string path = "text.txt";
+    std::string path = "include/text.txt";
     std::map<std::deque<std::string>, std::vector<std::string>> statetab = createPrefix(path);
     std::deque<std::string> pr{"on", "the"};
 
@@ -38,11 +38,11 @@ TEST(GenTests, test4) {
 }
 
 TEST(GenTests, test5) {
-    std::string path = "text.txt";
+    std::string path = "include/text.txt";
     std::map<std::deque<std::string>, std::vector<std::string>> statetab = createPrefix(path);
     generateText("text2.txt", statetab);
     std::string line;
-    std::ifstream in("text2.txt");
+    std::ifstream in("include/text2.txt");
     int count = 0;
     while (getline(in, line)) {
         count += line.length();
