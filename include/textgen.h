@@ -15,6 +15,7 @@ class TextParser {
  private:
      std::vector<std::string> words;
      const char* file = nullptr;
+
  public:
      explicit TextParser(const char* file_name) {
          file = file_name;
@@ -26,11 +27,12 @@ class TextParser {
 
 
 class Linker {
+ private:
     std::vector<std::string> words;
     int pref_len = 1;
     std::map<prefix, std::vector<std::string>> statetab;
 
-public:
+ public:
     explicit Linker(int len, std::vector<std::string> words) {
         pref_len = len;
         this->words = words;
@@ -41,14 +43,16 @@ public:
 };
 
 class Generator {
+ private:
     int pref_len = 1;
     std::map<prefix, std::vector<std::string>> statetab;
     int words_num = 2;
     std::string result = "";
     int size;
 
-public:
-    explicit Generator(int len, int words_num, std::map<prefix, std::vector<std::string>> statetab) {
+ public:
+    explicit Generator(int len, int words_num, std::map<prefix,
+        std::vector<std::string>> statetab) {
         pref_len = len;
         this->words_num = words_num;
         this->statetab = statetab;
@@ -62,9 +66,10 @@ public:
 };
 
 class MarckovChair {
-private:
+ private:
     std::string result;
-public:
+
+ public:
     explicit MarckovChair(std::vector<std::string>, int, int);
     explicit MarckovChair(const char*, int, int);
     std::string getResult();

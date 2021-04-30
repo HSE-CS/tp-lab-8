@@ -2,8 +2,8 @@
 
 #include "textgen.h"
 #include <fstream>
-
 #include <iostream>
+
 void TextParser::Parsing() {
     if (file) {
         std::ifstream in;
@@ -15,7 +15,8 @@ void TextParser::Parsing() {
         }
         while (in) {
             in.get(ch);
-            if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\0' || ch == '\r') {
+            if (ch == ' ' || ch == '\t' || ch == '\n' ||
+                ch == '\0' || ch == '\r') {
                 if (word->size() == 0) {
                     continue;
                 } else {
@@ -42,7 +43,8 @@ std::vector<std::string> TextParser::GetWords() {
 void Linker::Link() {
     prefix current_pref;
     std::vector<std::string> new_suf;
-    std::map<prefix, std::vector<std::string>>::iterator it = statetab.begin();
+    std::map<prefix,
+        std::vector<std::string>>::iterator it = statetab.begin();
 
     size_t num_words = words.size();
     for (auto current_word : words) {
@@ -56,10 +58,12 @@ void Linker::Link() {
         while (it != statetab.end()) {
             prefix pref_chek = it->first;
             prefix::iterator iterator_pref_from_table = pref_chek.begin();
-            prefix::iterator iterator_pref_from_current = current_pref.begin();
+            prefix::iterator iterator_pref_from_current
+                = current_pref.begin();
             int count = 0;
             while (iterator_pref_from_table != pref_chek.end()) {
-                if ((*iterator_pref_from_table) == *(iterator_pref_from_current)) {
+                if ((*iterator_pref_from_table) ==
+                    *(iterator_pref_from_current)) {
                     iterator_pref_from_table++;
                     iterator_pref_from_current++;
                 } else {
@@ -111,18 +115,19 @@ void Generator::generate() {
 };
 
 std::string Generator::find_suf_for_pref(std::deque<std::string> pref) {
-    std::map<prefix, std::vector<std::string>>::iterator it = statetab.begin();
+    std::map<prefix, std::vector<std::string>>::iterator it
+        = statetab.begin();
     while (it != statetab.end()) {
         prefix pref_chek = it->first;
-        std::deque<std::string>::iterator it_pref_from_table = pref_chek.begin();
+        std::deque<std::string>::iterator it_pref_from_table
+            = pref_chek.begin();
         std::deque<std::string>::iterator it_pref_from_vect = pref.begin();
         int count = 0;
         while (it_pref_from_table != pref_chek.end()) {
             if ((*it_pref_from_table) == *(it_pref_from_vect)) {
                 it_pref_from_table++;
                 it_pref_from_vect++;
-            }
-            else {
+            } else {
                 count++;
                 break;
             }
@@ -163,15 +168,18 @@ std::string Generator::getResult() {
     return result;
 };
 
-MarckovChair::MarckovChair(std::vector<std::string> words, int pref_len, int num_words) {
+MarckovChair::MarckovChair(std::vector<std::string> words,
+    int pref_len, int num_words) {
     Linker linker_for_chair(pref_len, words);
-    Generator generator_for_chair(pref_len, num_words, linker_for_chair.getTable());
+    Generator generator_for_chair(pref_len, num_words,
+        linker_for_chair.getTable());
     this->result = generator_for_chair.getResult();
 }
 MarckovChair::MarckovChair(const char* link, int pref_len, int num_words) {
     TextParser parser_for_chair(link);
     Linker linker_for_chair(pref_len, parser_for_chair.GetWords());
-    Generator generator_for_chair(pref_len, num_words, linker_for_chair.getTable());
+    Generator generator_for_chair(pref_len, num_words,
+        linker_for_chair.getTable());
     this->result = generator_for_chair.getResult();
 }
 
