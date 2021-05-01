@@ -43,8 +43,7 @@ std::vector<std::string> TextParser::GetWords() {
 void Linker::Link() {
     prefix current_pref;
     std::vector<std::string> new_suf;
-    std::map<prefix,
-        std::vector<std::string>>::iterator it = statetab.begin();
+    std::map<prefix, std::vector<std::string>>::iterator it;
 
     size_t num_words = words.size();
     for (auto current_word : words) {
@@ -53,34 +52,14 @@ void Linker::Link() {
             continue;
         }
 
-        it = statetab.begin();
-        int flag = 0;
-        while (it != statetab.end()) {
-            prefix pref_chek = it->first;
-            prefix::iterator iterator_pref_from_table = pref_chek.begin();
-            prefix::iterator iterator_pref_from_current
-                = current_pref.begin();
-            int count = 0;
-            while (iterator_pref_from_table != pref_chek.end()) {
-                if ((*iterator_pref_from_table) ==
-                    *(iterator_pref_from_current)) {
-                    iterator_pref_from_table++;
-                    iterator_pref_from_current++;
-                } else {
-                    count++;
-                    break;
-                }
-            }
-            if (count == 0) {
-                it->second.push_back(current_word);
-                flag = 1;
-                current_pref.pop_front();
-                current_pref.push_back(current_word);
-                break;
-            };
-            it++;
+        it = statetab.find(current_pref);
+        if (it != statetab.end()) {
+            it->second.push_back(current_word);
+            current_pref.pop_front();
+            current_pref.push_back(current_word);
+            continue;
         }
-        if (flag == 0) {
+        if (it == statetab.end()) {
             new_suf.push_back(current_word);
             statetab[current_pref] = new_suf;
             new_suf.clear();
@@ -115,32 +94,14 @@ void Generator::generate() {
 };
 
 std::string Generator::find_suf_for_pref(std::deque<std::string> pref) {
-    std::map<prefix, std::vector<std::string>>::iterator it
-        = statetab.begin();
-    while (it != statetab.end()) {
-        prefix pref_chek = it->first;
-        std::deque<std::string>::iterator it_pref_from_table
-            = pref_chek.begin();
-        std::deque<std::string>::iterator it_pref_from_vect = pref.begin();
-        int count = 0;
-        while (it_pref_from_table != pref_chek.end()) {
-            if ((*it_pref_from_table) == *(it_pref_from_vect)) {
-                it_pref_from_table++;
-                it_pref_from_vect++;
-            } else {
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
-            std::vector<std::string> suf = it->second;
-            std::string result = "";
-            result += suf[rand() % suf.size()] + " ";
-            return result;
-        }
-        it++;
+    std::map<prefix, std::vector<std::string>>::iterator it;
+    it = statetab.find(pref);
+    if (it != statetab.end()) {
+        std::vector<std::string> suf = it->second;
+        std::string result = "";
+        result += suf[rand() % suf.size()] + " ";
+        return result;
     }
-        
     std::string result = "";
     return result;
 }
