@@ -2,54 +2,37 @@
 
 #include <gtest/gtest.h>
 
-
 #include "../include/textgen.h"
 
 TEST(textgen, test1) {
-    std::map<prefix, std::vector<std::string>> statetab;
-    prefix prefVar;
-    prefVar.push_back("Hello");
-    prefVar.push_back("World");
-    statetab[prefVar].push_back("Hahah");
-    std::string ans = generateText(&statetab, prefVar);
-    EXPECT_EQ(ans, "Hello World Hahah");
+  prefix pr;
+  EXPECT_EQ(true, pr.empty());
 }
 
 TEST(textgen, test2) {
-    std::map<prefix, std::vector<std::string>> statetab;
-    prefix prefVar = {"your", "waist"};
-    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/src/text.txt");
-    bool isExist = true;
-    if (statetab.find(prefVar) == statetab.end()) {
-        isExist = false;
-    }
-    EXPECT_EQ(true, isExist);
+  prefix pr;
+  pr.push_back("test");
+  pr.push_back("testik");
+  EXPECT_EQ(2, pr.size());
 }
 
 TEST(textgen, test3) {
-    std::map<prefix, std::vector<std::string>> statetab;
-    prefix prefVar = {"I", "waist"};
-    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/src/text.txt");
-    bool isExist = true;
-    if (statetab.find(prefVar) == statetab.end()) {
-        isExist = false;
-    }
-    EXPECT_EQ(false, isExist);
+  prefix pr;
+  pr.push_back("Hello");
+  pr.push_back("world");
+  EXPECT_EQ("Hello", pr.at(0));
 }
 
 TEST(textgen, test4) {
-    std::map<prefix, std::vector<std::string>> statetab;
-    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/src/text.txt");
-    prefix prefVar = {"your", "waist"};
-    std::string text = generateText(&statetab, prefVar);
-    EXPECT_EQ(true, text.size() >= 1000);
+  prefix pr;
+  pr.push_back("test");
+  statetab[pr].push_back("number 4");
+  EXPECT_EQ(1, statetab[pr].size());
 }
 
 TEST(textgen, test5) {
-    std::map<prefix, std::vector<std::string>> statetab;
-    prefix prefVar = {"your", "waist"};
-    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/src/text.txt");
-    auto pos = statetab.find(prefVar);
-    EXPECT_NE(statetab.end(), pos);
+  prefix pr;
+  pr.push_back("Hello");
+  statetab[pr].push_back("World");
+  EXPECT_EQ("World", statetab[pr][0]));
 }
-
