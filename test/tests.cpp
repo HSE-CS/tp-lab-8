@@ -42,7 +42,9 @@ TEST(set2, test1) {
     test_vect.push_back("test");
     Linker test_linker(len_pref, test_vect);
     std::map<prefix,
-        std::vector<std::string>>::iterator it = test_linker.getTable().begin();
+        std::vector<std::string>> statetab = test_linker.getTable();
+    std::map<prefix,
+        std::vector<std::string>>::iterator it = statetab.begin();
     prefix pref_chek = it->first;
     std::vector<std::string> suf_chek = it->second;
     EXPECT_EQ(pref_chek.front(), "Hi");
@@ -58,7 +60,9 @@ TEST(set2, test2) {
     test_vect.push_back("test");
     Linker test_linker(len_pref, test_vect);
     std::map<prefix,
-        std::vector<std::string>>::iterator it = test_linker.getTable().begin();
+        std::vector<std::string>> statetab = test_linker.getTable();
+    std::map<prefix,
+        std::vector<std::string>>::iterator it = statetab.begin();
     prefix pref_chek = it->first;
     std::vector<std::string> suf_chek = it->second;
     EXPECT_EQ(pref_chek.front(), "Hi");
@@ -75,7 +79,9 @@ TEST(set3, test1) {
     test_vect.push_back("test");
     Linker test_linker(len_pref, test_vect);
     std::map<prefix,
-        std::vector<std::string>>::iterator it = test_linker.getTable().begin();
+        std::vector<std::string>> statetab = test_linker.getTable();
+    std::map<prefix,
+        std::vector<std::string>>::iterator it = statetab.begin();
     prefix pref_chek = it->first;
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 3, test_linker.getTable());
@@ -92,7 +98,9 @@ TEST(set3, test2) {
     test_vect.push_back("test");
     Linker test_linker(len_pref, test_vect);
     std::map<prefix,
-        std::vector<std::string>>::iterator it = test_linker.getTable().begin();
+        std::vector<std::string>> statetab = test_linker.getTable();
+    std::map<prefix,
+        std::vector<std::string>>::iterator it = statetab.begin();
     prefix pref_chek = it->first;
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 3, test_linker.getTable());
@@ -109,7 +117,9 @@ TEST(set4, test1) {
     test_vect.push_back("test");
     Linker test_linker(len_pref, test_vect);
     std::map<prefix,
-        std::vector<std::string>>::iterator it = test_linker.getTable().begin();
+        std::vector<std::string>> statetab = test_linker.getTable();
+    std::map<prefix,
+        std::vector<std::string>>::iterator it = statetab.begin();
     prefix pref_chek = it->first;
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 3, test_linker.getTable());
@@ -132,10 +142,12 @@ TEST(set5, test1) {
     test_vect.push_back("job");
     Linker test_linker(len_pref, test_vect);
     std::map<prefix,
-        std::vector<std::string>>::iterator it = test_linker.getTable().begin();
+        std::vector<std::string>> statetab = test_linker.getTable();
+    std::map<prefix,
+        std::vector<std::string>>::iterator it = statetab.begin();
     prefix pref_chek = it->first;
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 5, test_linker.getTable());
     std::string result = test_gen.getResult();
-    EXPECT_EQ(result, "Hi this is good job");
+    EXPECT_EQ(result, "I think it is good");
 }
