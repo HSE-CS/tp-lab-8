@@ -1,7 +1,9 @@
-#include "../include/textgen.h"
+// Copyright 2021 GHA Test Team
 #include <iostream>
 #include <algorithm>
 #include<ctime>
+
+#include "../include/textgen.h"
 
 void normalize(std::string& buff) {
   for (size_t i = 0; i < buff.size(); ++i) {
@@ -74,6 +76,7 @@ void generate(std::string& outputFile) {
   while (statetab[pref].size() != 0 && wordCount < MAXGEN) {
     buff = statetab[pref][std::rand() % statetab[pref].size()];
     out << buff << " ";
+    ++wordCount;
     ++count;
     if (buff[buff.size() - 1] == '.' || buff[buff.size() - 1] == '!' ||
         buff[buff.size() - 1] == ':' || buff[buff.size() - 1] == ';' ||
@@ -81,7 +84,6 @@ void generate(std::string& outputFile) {
       out << "\n";
       count = 0;
     }
-    ++wordCount;
     if (count > 5) {
       out << "\n";
       count = 0;
@@ -89,4 +91,5 @@ void generate(std::string& outputFile) {
     pref.push_back(buff);
     pref.pop_front();
   }
+  std::cout << wordCount;
 }

@@ -1,9 +1,7 @@
+// Copyright 2021 GHA Test Team
 #include <iostream>
 
 #include "../include/textgen.h"
-
-std::map<prefix, std::vector<std::string>> statetab1;
-
 
 int main(int argc, char *argv[]) {
   prefix pr;
