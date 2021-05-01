@@ -1,6 +1,6 @@
 //  Copyright 2021 Schenikova
 
-#include "textgen.h"
+#include "../include/textgen.h"
 
 void addToStadeTab(std::string fileName) {
   std::ifstream input(fileName);
