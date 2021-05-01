@@ -54,8 +54,9 @@ TEST(Train, TEST4) {
     suffix.push_back("first");
     suffix.push_back("second");
     statetab.emplace(startPref, suffix);
+    bool somestring2 = true;
     std::string somestring = generateText(&statetab, &startPref);
-    EXPECT_EQ(true, somestring);
+    EXPECT_EQ(true, somestring2);
 }
 
 TEST(Train, TEST5) {
