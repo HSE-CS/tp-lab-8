@@ -15,7 +15,7 @@ TEST(textgen, test1) {
 TEST(textgen, test2) {
     std::map<prefix, std::vector<std::string>> statetab;
     prefix prefVar = {"Гарри", "Поттер"};
-    fulfilStatetab(&statetab, "../Harry_Potter.txt");
+    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/Harry_Potter.txt");
     bool isExist = true;
     if (statetab.find(prefVar) == statetab.end()) {
         isExist = false;
@@ -26,7 +26,7 @@ TEST(textgen, test2) {
 TEST(textgen, test3) {
     std::map<prefix, std::vector<std::string>> statetab;
     prefix prefVar = {"Я", "хотел"};
-    fulfilStatetab(&statetab, "../Harry_Potter.txt");
+    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/Harry_Potter.txt");
     bool isExist = true;
     if (statetab.find(prefVar) == statetab.end()) {
         isExist = false;
@@ -36,7 +36,7 @@ TEST(textgen, test3) {
 
 TEST(textgen, test4) {
     std::map<prefix, std::vector<std::string>> statetab;
-    fulfilStatetab(&statetab, "../Harry_Potter.txt");
+    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/Harry_Potter.txt");
     prefix prefVar = {"Гарри", "Поттер"};
     std::string text = generateText(&statetab, prefVar);
     EXPECT_EQ(true, text.size() >= 1000);
@@ -45,7 +45,7 @@ TEST(textgen, test4) {
 TEST(textgen, test5) {
     std::map<prefix, std::vector<std::string>> statetab;
     prefix prefVar = {"Гарри", "Поттер"};
-    fulfilStatetab(&statetab, "../Harry_Potter.txt");
+    fulfilStatetab(&statetab, "/home/runner/work/tp-lab-8/tp-lab-8/Harry_Potter.txt");
     auto pos = statetab.find(prefVar);
     EXPECT_NE(statetab.end(), pos);
 }
