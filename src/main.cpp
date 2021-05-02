@@ -7,7 +7,7 @@
 int main() {
   srand(time(nullptr));
   std::map<prefix, std::vector<std::string>> statetab;  // префикс-суффиксы
-  if (createStateTab("../data/input.txt", statetab)) {
+  if (createStateTab("../data/input.txt", &statetab)) {
     std::cout << "StateTab was created!" << std::endl;
   }
   std::string result = generateText(statetab);

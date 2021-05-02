@@ -6,7 +6,7 @@
 
 TEST(TextGenTest, test1) {
   std::map<prefix, std::vector<std::string>> statetab;
-  createStateTab("../data/input.txt", statetab);
+  createStateTab("../data/input.txt", &statetab);
   EXPECT_EQ(2, (*statetab.begin()).size());
 }
 
@@ -17,7 +17,7 @@ TEST(TextGenTest, test2) {
   pref.push_back("plus");
   statetab[pref].push_back("ten");
   std::string result;
-  auto start = _statetab.find(pref);
+  auto start = statetab.find(pref);
   sstd::string suff = start->second[0];
     result += suff + ' ';
   EXPECT_EQ(result, "ten plus ten");
@@ -53,11 +53,11 @@ TEST(TextGenTest, test5) {
   pref.push_back("is");
   start = pref;
   statetab[pref].push_back("coming");
-  pref.pop_back("coming");
+  pref.push_back("coming");
   pref.pop_front();
   statetab[pref].push_back("tomorrow");
   std::string result = generateText(statetab, start);
-  EXPECT_EQ(true, result == "summer is coming tomorrow");
+  EXPECT_EQ(result, "summer is coming tomorrow");
 }
 
 TEST(TextGenTest, test6) {
@@ -66,12 +66,12 @@ TEST(TextGenTest, test6) {
   pref.push_back("summer");
   pref.push_back("is");
   statetab[pref].push_back("coming");
-  pref.pop_back("coming");
+  pref.push_back("coming");
   pref.pop_front();
   start = pref;
   statetab[pref].push_back("tomorrow");
   std::string result = generateText(statetab, start);
-  EXPECT_EQ(true, result == "is coming tomorrow");
+  EXPECT_EQ(result, "is coming tomorrow");
 }
 
 TEST(TextGenTest, test7) {

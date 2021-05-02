@@ -8,18 +8,13 @@
 #include <set>
 
 typedef std::deque<std::string> prefix;          //  очередь префиксов
-const int NPREF = 2;  //  количество слов в префиксе
-const int MAXGEN = 1000;  //  объем текста на выходе
+const int NPREF = 2;   //  количество слов в префиксе
+const int MAXGEN = 1000;   //  объем текста на выходе
 bool createStateTab(std::string _fileIn,
-                    std::map<prefix, std::vector<std::string>>& _statetab);
-  /*
-bool generateText(std::string _fileOut,
-                const std::map<prefix, std::vector<std::string>>& _statetab,
-                prefix pref = {});
-                */
+                    std::map<prefix, std::vector<std::string>>* _statetab);
 std::string generateText(const std::map<prefix,
                          std::vector<std::string>>& _statetab,
                 prefix pref = {});
-bool erasePunctuationMarksAndCapitals(std::string& _word);
+bool erasePunctuationMarksAndCapitals(std::string* _word);
 
 #endif  // INCLUDE_TEXGEN_H_
