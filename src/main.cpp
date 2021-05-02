@@ -1,5 +1,5 @@
 // Copyright 2021 Bogomazov Mikhail
-#include "../include/textgen.h";
+#include "../include/textgen.h"
 
 int main() {
     GenerationOfText genText;

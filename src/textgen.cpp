@@ -21,11 +21,11 @@ void GenerationOfText::genTable(std::string text) {
         }
         i++;
     }
-    for (int i = 0; i < words.size() - NPREF + 1; i++) {
+    for (int i = 0; i < static_cast<int>(words.size() - NPREF + 1); i++) {
         prefix prf;
         for (int j = 0; j < NPREF; j++)
             prf.push_back(words[i + j]);
-        if (i + NPREF < words.size()) {
+        if (i + static_cast<int>(NPREF) < static_cast<int>(words.size())) {
             stateTab[prf].push_back(words[i + NPREF]);
         } else {
             stateTab[prf].push_back("END_OF_FILE");
@@ -39,7 +39,7 @@ std::string GenerationOfText::genText() {
         str.push_back(words[i]);
     std::string result = "";
     int count = 1;
-    while (result.size() < MAXGEN) {
+    while (static_cast<int>(result.size()) < MAXGEN) {
         if (result.size() == 0) {
             for (int i = 0; i < NPREF; i++)
                 result = result + str[i] + ' ';
