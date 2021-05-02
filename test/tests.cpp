@@ -8,7 +8,7 @@ TEST(Train, TEST1) {
     std::map<prefix, std::vector<std::string> > statetab;
     const int NPREF = 2;
     const int MAXGEN = 1000;
-    std::string fin = "../src/data/text.txt";
+    std::string fin = "include/text.txt";
     statetab = makeStatetab(NPREF, MAXGEN, fin);
     prefix startPref = { "There", "are" };
     auto it = statetab.find(startPref);
@@ -19,7 +19,7 @@ TEST(Train, TEST2) {
     std::map<prefix, std::vector<std::string> > statetab;
     const int NPREF = 2;
     const int MAXGEN = 1000;
-    std::string fin = "../src/data/text.txt";
+    std::string fin = "include/text.txt";
     statetab = makeStatetab(NPREF, MAXGEN, fin);
     prefix startPref = { "There", "are" };
     auto it = statetab.find(startPref);
@@ -35,7 +35,7 @@ TEST(Train, TEST3) {
     std::map<prefix, std::vector<std::string> > statetab;
     const int NPREF = 2;
     const int MAXGEN = 1000;
-    std::string fin = "../src/data/text.txt";
+    std::string fin = "include/text.txt";
     statetab = makeStatetab(NPREF, MAXGEN, fin);
     prefix startPref = { "There", "are" };
     auto it = statetab.find(startPref);
@@ -63,7 +63,7 @@ TEST(Train, TEST5) {
     std::map<prefix, std::vector<std::string> > statetab;
     const int NPREF = 2;
     const int MAXGEN = 1000;
-    std::string fin = "../src/data/text.txt";
+    std::string fin = "include/text.txt";
     statetab = makeStatetab(NPREF, MAXGEN, fin);
     prefix startPref = { "There", "are" };
     auto it = statetab.find(startPref);
