@@ -17,8 +17,9 @@ bool createStateTab(std::string _fileIn,
   for (int i = 0; !fin.eof(); i = std::min(i + 1, NPREF)) {
     std::string word;
     fin >> word;
-    if (!erasePunctuationMarksAndCapitals(&word))
+    if (!erasePunctuationMarksAndCapitals(&word)) {
       continue;
+    }
     if (i >= NPREF) {
       (*_statetab)[pref].push_back(word);
       prefixes.push_back(pref);
@@ -40,8 +41,9 @@ bool erasePunctuationMarksAndCapitals(std::string* _word) {
       i--;
     }
   }
-  if ((*_word).size())
+  if ((*_word).size()) {
     return true;
+  }
   return false;
 }
 
@@ -49,21 +51,24 @@ std::string generateText(const std::map<prefix,
                          std::vector<std::string>>& _statetab,
                 prefix pref) {
   std::string result;
-  if (!pref.size())
+  if (!pref.size()) {
     pref = prefixes[std::rand() % prefixes.size()];
+  }
   for(auto word : pref) {
     result += word + ' ';
   }
   for (int i = 0; i < (MAXGEN - NPREF); i++) {
     auto start = _statetab.find(pref);
-    if (start == _statetab.end())
+    if (start == _statetab.end()) {
       continue;
+    }
     std::string suff = start->second[std::rand() % start->second.size()];
     result += suff + ' ';
     pref.pop_front();
     pref.push_back(suff);
   }
-  if (result.back() == ' ')
+  if (result.back() == ' ') {
     result.pop_back();
+  }
   return result;
 }
