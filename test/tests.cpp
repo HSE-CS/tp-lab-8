@@ -26,7 +26,7 @@ TEST(TextGenerator, test4) {
   prefix pr;
   pr.push_back("test #4");
   statetab[pr].push_back("number 4");
-  EXPECT_EQ("number 5", statetab[pr][0]);
+  EXPECT_EQ("number 4", statetab[pr][0]);
 }
 
 TEST(TextGenerator, test5) {
