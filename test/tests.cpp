@@ -82,7 +82,7 @@ TEST(TextGenTest, test7) {
   createStateTab("../data/input.txt", &statetab);
   std::string result = generateText(statetab);
   EXPECT_EQ(true,
-            (int)count(result.begin(), result.end(), ' ') <= 999);
+          (int)count(result.begin(), result.end(), ' ') <= 999);
 }
 
 
