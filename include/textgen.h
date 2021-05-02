@@ -24,8 +24,8 @@ class GenerationOfText {
         std::map<prefix, std::vector<std::string>> val,
         std::vector<std::string> word);
     GenerationOfText();
-    void genTheTable(std::string text);
-    std::string genNewText();
+    void genTable(std::string text);
+    std::string genText();
     std::string readFromFile(std::string filename);
     void writeToFile(std::string answer);
 };
