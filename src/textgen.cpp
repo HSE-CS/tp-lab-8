@@ -3,12 +3,12 @@
 #include "textgen.h"
 #include <fstream>
 
-std::map<prefix, std::vector<std::string>> statetab;  // префикс-суффиксы
 std::vector<prefix> prefixes;
 std::set<char> punctuationMarks = {'.', ',', ':', ';', '-',
 '"', '?', '!', '(', ')', '/', '\\', '#', '*', '<', '>'};
 
-bool createStateTab(std::string _fileIn) {
+bool createStateTab(std::string _fileIn,
+                    std::map<prefix, std::vector<std::string>>& _statetab) {
   std::ifstream fin(_fileIn);
   if(!fin.is_open()) {
     return false;
@@ -20,7 +20,7 @@ bool createStateTab(std::string _fileIn) {
     if (!erasePunctuationMarksAndCapitals(word))
       continue;
     if (i >= NPREF) {
-      statetab[pref].push_back(word);
+      _statetab[pref].push_back(word);
       prefixes.push_back(pref);
       pref.pop_front();
     }
@@ -45,23 +45,25 @@ bool erasePunctuationMarksAndCapitals(std::string& _word) {
   return false;
 }
 
-bool generateText(std::string _fileOut) {
-  std::ofstream fout(_fileOut);
-  if (!fout.is_open()) {
-    return false;
-  }
-  prefix pref = prefixes[std::rand() % prefixes.size()];
+std::string generateText(const std::map<prefix,
+                         std::vector<std::string>>& _statetab,
+                prefix pref) {
+  std::string result;
+  if (!pref.size())
+    pref = prefixes[std::rand() % prefixes.size()];
   for(auto word : pref) {
-    fout << word << ' ';
+    result += word + ' ';
   }
   for (int i = 0; i < MAXGEN; i++) {
-    auto start = statetab.find(pref);
-    if (start == statetab.end())
+    auto start = _statetab.find(pref);
+    if (start == _statetab.end())
       continue;
     std::string suff = start->second[std::rand() % start->second.size()];
-    fout << suff << ' ';
+    result += suff + ' ';
     pref.pop_front();
     pref.push_back(suff);
   }
-  return true;
+  if (result.back() == ' ')
+    result.pop_back();
+  return result;
 }
