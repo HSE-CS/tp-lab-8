@@ -85,7 +85,7 @@ void Generator::generate() {
             current_pref = this->random_pref();
             current_word = this->find_suf_for_pref(current_pref);
         }
-        result += current_word;
+        result += current_word + ' ';
         num_words++;
         current_word.pop_back();
         current_pref.pop_front();
@@ -99,7 +99,7 @@ std::string Generator::find_suf_for_pref(std::deque<std::string> pref) {
     if (it != statetab.end()) {
         std::vector<std::string> suf = it->second;
         std::string result = "";
-        result += suf[rand() % suf.size()] + " ";
+        result += suf[rand() % suf.size()];
         return result;
     }
     std::string result = "";

@@ -149,5 +149,5 @@ TEST(set5, test1) {
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 5, test_linker.getTable());
     std::string result = test_gen.getResult();
-    EXPECT_EQ(result, "I think it is good");
+    EXPECT_EQ(result, "good job test I think ");
 }
