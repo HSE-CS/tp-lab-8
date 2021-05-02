@@ -54,7 +54,7 @@ std::string generateText(const std::map<prefix,
   for(auto word : pref) {
     result += word + ' ';
   }
-  for (int i = 0; i < MAXGEN; i++) {
+  for (int i = 0; i < (MAXGEN - NPREF); i++) {
     auto start = _statetab.find(pref);
     if (start == _statetab.end())
       continue;
