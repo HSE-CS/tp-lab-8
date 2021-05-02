@@ -54,7 +54,7 @@ void TextGen::makePairs() {
   }
 }
 
-void TextGen::createText() { 
+void TextGen::createText(int words) { 
   std::srand(std::time(NULL));
   std::string str, newText = "";
   std::map<prefix, std::vector<std::string>>::iterator 
@@ -64,8 +64,8 @@ void TextGen::createText() {
     newText += str2 + " ";
   }
   prefix pre(iter->first);
-  int usedWords = iter->first.size();
-  while (statetab[pre].size() != 0 && usedWords < MAXGEN) {
+  int usedWords = iter->first.size() + 3;
+  while (statetab[pre].size() != 0 && (usedWords < MAXGEN && usedWords < words)) {
     str = statetab[pre][std::rand() % statetab[pre].size()];
     newText += str + " ";
     pre.push_back(str);

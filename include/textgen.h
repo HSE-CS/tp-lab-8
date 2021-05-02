@@ -28,7 +28,7 @@ public:
   std::string getPath();
   int getCount();
   void makePairs();
-  void createText();
+  void createText(int words = INT_MAX);
 };
 
 #endif  // INCLUDE_TEXTGEN_H_
