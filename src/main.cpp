@@ -11,5 +11,6 @@ int main() {
   text1.printText();
   text1.makePairs();
   std::cout << std::endl << "Example of work:" << std::endl;
-  text1.createText();
+  std::cout << text1.createText(5);
+  return 0;
 }

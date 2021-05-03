@@ -54,7 +54,7 @@ void TextGen::makePairs() {
   }
 }
 
-void TextGen::createText(int words) { 
+std::string TextGen::createText(int words) { 
   std::srand(std::time(NULL));
   std::string str, newText = "";
   std::map<prefix, std::vector<std::string>>::iterator 
@@ -72,5 +72,6 @@ void TextGen::createText(int words) {
     pre.pop_front();
     usedWords++;
   }
-  std::cout << newText << std::endl;
+  //std::cout << newText << std::endl;
+  return newText;
 }
