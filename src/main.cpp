@@ -1,0 +1,11 @@
+// Copyright 2021 FOM
+#include "textgen.h"
+
+int main() {
+    GenerationOfText test;
+    std::string text = test.ReadFromFile("eminem.txt");
+    test.MakingTheTable(text);
+    std::string answer = test.GenerationNewText();
+    test.WritingToFile(answer);
+    return 0;
+}
