@@ -13,7 +13,7 @@ bool createStateTab(std::string _fileIn,
   if(!fin.is_open()) {
     return false;
   }
-  prefix pref;
+  prefix pref = {};
   for (int i = 0; !fin.eof(); i = std::min(i + 1, NPREF)) {
     std::string word;
     fin >> word;
