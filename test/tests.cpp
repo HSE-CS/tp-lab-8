@@ -6,7 +6,8 @@
 
 TEST(TextGenTest, test1) {
   std::map<prefix, std::vector<std::string>> statetab;
-  createStateTab("../data/input.txt", &statetab);
+  createStateTab
+  ("/home/runner/work/tp-lab-8/tp-lab-8/data/input.txt", &statetab);
   EXPECT_EQ(2, (statetab.begin()->first).size());
 }
 
@@ -82,7 +83,7 @@ TEST(TextGenTest, test7) {
   createStateTab("../data/input.txt", &statetab);
   std::string result = generateText(statetab);
   EXPECT_EQ(true,
-          (int)count(result.begin(), result.end(), ' ') <= 999);
+            (int)count(result.begin(), result.end(), ' ') <= 999);
 }
 
 
