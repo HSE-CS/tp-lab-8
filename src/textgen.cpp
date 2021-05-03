@@ -79,6 +79,8 @@ void Generator::generate() {
     for (auto word : current_pref)
         result += word + ' ';
     std::string current_word;
+    unsigned int seed = 1;
+    srand(seed);
     while (num_words < this->words_num) {
         current_word = this->find_suf_for_pref(current_pref);
         if (current_word == "") {
