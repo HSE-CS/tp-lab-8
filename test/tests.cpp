@@ -124,9 +124,9 @@ TEST(set4, test1) {
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 3, test_linker.getTable());
     std::string result = test_gen.find_suf_for_pref(pref_chek);
-    if (result == "test")
+    if (result == std::string("test"))
         EXPECT_EQ(result, "test");
-    if (result == "this") {
+    if (result == std::string("this")) {
         EXPECT_EQ(result, "this");
     } else {
         EXPECT_EQ(result, "Hi");
@@ -155,5 +155,5 @@ TEST(set5, test1) {
     std::vector<std::string> suf_chek = it->second;
     Generator test_gen(len_pref, 5, test_linker.getTable());
     std::string result = test_gen.getResult();
-    EXPECT_EQ(result, "I think it is test ");
+    EXPECT_EQ(result, "I think it good is ");
 }
