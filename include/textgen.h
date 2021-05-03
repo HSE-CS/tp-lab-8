@@ -22,7 +22,7 @@ class TextGen{
   std::map<prefix, std::vector<std::string>> statetab;
 
 public:
-  void setPath(std::string from = "./input.txt");
+  void setPath(std::string from = "../src/input.txt");
   void ReadText();
   void printText();
   std::string getPath();
