@@ -1,5 +1,6 @@
 // Copyright 2021 GHA Test Team
 #include <gtest/gtest.h>
+#include"textgen.h"
 TEST(textgen, test1) {
   std::map<prefix, std::vector<std::string>> statetab;
   prefix Pr;
