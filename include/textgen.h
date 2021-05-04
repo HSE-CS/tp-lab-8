@@ -73,6 +73,7 @@ class MarckovChair {
     explicit MarckovChair(std::vector<std::string>, int, int);
     explicit MarckovChair(const char*, int, int);
     std::string getResult();
+    void popResult();
 };
 
 #endif  // INCLUDE_TEXTGEN_H_

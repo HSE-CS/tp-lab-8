@@ -87,12 +87,17 @@ void Generator::generate() {
             current_pref = this->random_pref();
             current_word = this->find_suf_for_pref(current_pref);
         }
-        result += current_word + ' ';
+        // Для стихов
+        //if (current_word[0] > -65 && current_word[0] < -32) {
+        //    result += '\n';
+        //}
+        result += current_word;
         num_words++;
         current_word.pop_back();
         current_pref.pop_front();
         current_pref.push_back(current_word);
     }
+    result += '\0';
 };
 
 std::string Generator::find_suf_for_pref(std::deque<std::string> pref) {
@@ -148,4 +153,11 @@ MarckovChair::MarckovChair(const char* link, int pref_len, int num_words) {
 
 std::string MarckovChair::getResult() {
     return result;
+}
+
+void MarckovChair::popResult() {
+    std::ofstream out;
+    out.open("output.txt", std::ios::out);
+    out << result;
+    out.close();
 }

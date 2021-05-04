@@ -4,10 +4,11 @@
 #include <iostream>
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "russian");
     const char* link = "text.txt";
-    MarckovChair demo(link, 10, 200);
+    MarckovChair demo(link, 1, 500);
     std::string result = demo.getResult();
     std::cout << result;
+    demo.popResult();
     return 0;
 }
