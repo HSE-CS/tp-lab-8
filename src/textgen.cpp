@@ -2,7 +2,7 @@
 
 #include <random>
 #include <fstream>
-#include "include/textgen.h"
+#include "textgen.h"
 
 void Analyze::ReadFile() {
   std::ifstream File;

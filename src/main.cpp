@@ -1,6 +1,6 @@
 //  Copyright 2021 GHA created by Klykov Anton
 
-#include "include/textgen.h"
+#include "textgen.h"
 
 int main() {
   Analyze analyze;

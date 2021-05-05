@@ -1,4 +1,5 @@
 // Copyright 2021 GHA Test Team
+
 #include <random>
 #include <string>
 #include <gtest/gtest.h>
