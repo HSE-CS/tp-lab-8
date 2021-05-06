@@ -3,6 +3,7 @@
 #ifndef INCLUDE_TEXTGEN_H_
 #define INCLUDE_TEXTGEN_H_
 
+#include <iostream>
 #include <deque>
 #include <vector>
 #include <map>
