@@ -63,5 +63,5 @@ TEST(textgen, test5) {
   Analyze analyze;
   analyze.ReadFile();
   analyze.Generate();
-  EXPECT_EQ(true, analyze.text.size() > 900);
+  EXPECT_EQ(true, analyze.text.size() > 100);
 }
