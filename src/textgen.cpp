@@ -6,7 +6,7 @@
 
 void Analyze::ReadFile() {
   std::ifstream File;
-  File.open("analyze.txt");
+  File.open("src/analyze.txt");
   if (!File.is_open()) {
     std::cout << "File is not opened";
   } else {
