@@ -19,7 +19,7 @@ TEST(test, test3) {
   prefix pref;
   pref.push_back("a");
   pref.push_back("b");
-  EXPECT_EQ("b", pref.at(0));
+  EXPECT_EQ("a", pref.at(0));
 }
 
 TEST(test, test4) {
@@ -27,7 +27,7 @@ TEST(test, test4) {
   pref.push_back("a");
   pref.push_back("b");
   pref.pop_front();
-  EXPECT_EQ("a", pref.at(0));
+  EXPECT_EQ("b", pref.at(0));
 }
 
 TEST(test, test5) {
