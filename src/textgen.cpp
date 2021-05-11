@@ -44,7 +44,7 @@ void createStateTable(std::string path, std::map<prefix,
 
 std::string generateText(std::map<prefix, 
     std::vector<std::string>>* stateTable) {
-    std::ofstream output("output.txt");
+    std::ofstream output("src/output.txt");
     std::srand(std::time(NULL));
     std::string buf;
     prefix start;
