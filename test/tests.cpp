@@ -31,7 +31,7 @@ TEST(CreateStateTableTest, TEST4) {
     std::map<prefix, std::vector<std::string>> statetab;
     createStateTable("../input.txt", &statetab);
     prefix testPrefix = { "I", "Robot" };
-    bool isInTable = (table.find(testPrefix) != table.end()) ? true : false;
+    bool isInTable = (statetab.find(testPrefix) != table.end()) ? true : false;
     EXPECT_EQ(false, isInTable);
 }
 
