@@ -2,6 +2,7 @@
 
 #include "textgen.h"
 
+
 void GenerationOfText::MakingTheTable(std::string text)
 {
     int i = 0, state = 0, count = -1;
