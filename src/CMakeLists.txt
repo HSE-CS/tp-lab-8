@@ -1,6 +1,5 @@
 set(header_path "${${PROJECT_NAME}_SOURCE_DIR}/include")
-set(header ${header_path}/textgen.h)
-set(src textgen.cpp)
+set(src main.cpp)
 
 
 add_library(${PROJECT_NAME} SHARED
