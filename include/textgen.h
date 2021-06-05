@@ -15,12 +15,13 @@ const int MAX_GEN = 1000;
 class Markov_Model{
 private:
     std::string source_file;
-    std::map <prefix, std::vector <std::string> > state_tab;
-    void WritePair(prefix current_prefix, std::string W3);
+    void WritePair(const prefix& current_prefix, const std::string& W3);
 
 public:
+    std::map <prefix, std::vector <std::string> > state_tab;
     void AddElements(const std::string& source_file_name);
-    void GenerateText();
+    std::string GenerateText();
+    std::string GenerateText(prefix start);
 
 };
 

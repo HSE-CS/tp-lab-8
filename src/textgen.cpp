@@ -47,7 +47,7 @@ void Markov_Model::AddElements(const string& source_file_name) {
     source.close();
 }
 
-void Markov_Model::WritePair(prefix current_prefix, string W3){
+void Markov_Model::WritePair(const prefix& current_prefix, const string& W3){
 
     vector <string> suffix;
 
@@ -63,7 +63,9 @@ void Markov_Model::WritePair(prefix current_prefix, string W3){
 }
 
 
-void Markov_Model::GenerateText() {
+string Markov_Model::GenerateText() {
+
+    string result;
 
     string words[N_PREF];
     prefix current_prefix;
@@ -72,25 +74,37 @@ void Markov_Model::GenerateText() {
     source.open(this->source_file);
     if(!source.is_open()){
         cout << "Cannot open the source file!" << endl;
-        return;
+        return result;
     }
     for(auto i:words){
         if(!source.eof()) {
             source >> i;
-            cout << i << " ";
             current_prefix.push_back(i);
         } else{
             cout << "Too short file!" << endl;
             source.close();
-            return;
+            return result;
         }
     }
     source.close();
 
+    result = this->GenerateText(current_prefix);
+    return result;
+
+}
+
+string Markov_Model::GenerateText(prefix current_prefix){
+    string result;
+    for(auto const &words : current_prefix){
+        result.append(words);
+        result.append(" ");
+
+    }
+
     for(int i = 0; i < MAX_GEN; i++){
 
         if(this->state_tab.find(current_prefix) == this->state_tab.end()){
-            return;
+            return result;
         }
 
         vector<string> suffix = this->state_tab[current_prefix];
@@ -100,9 +114,13 @@ void Markov_Model::GenerateText() {
         unsigned int index = rand() % size;
 
         string W3 = suffix[index];
-        cout << W3 << " ";
+
+        result.append(W3);
+        result.append(" ");
 
         current_prefix.pop_front();
         current_prefix.push_back(W3);
     }
+
+    return result;
 }
