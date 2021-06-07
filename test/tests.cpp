@@ -15,7 +15,7 @@ TEST(textgen, test1) {
     file >> w;
     rez += w + ' ';
   }
-  EXPECT_EQ(rez, "To be or ");
+  EXPECT_EQ(rez, "To be or  ");
 }
 TEST(textgen, test2) {
   srand(time(NULL));
