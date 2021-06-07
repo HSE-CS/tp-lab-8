@@ -15,7 +15,7 @@ TEST(textgen, test1) {
     file >> w;
     rez += w + ' ';
   }
-  EXPECT_EQ(ans, "To be or ");
+  EXPECT_EQ(rez, "To be or ");
 }
 TEST(textgen, test2) {
   srand(time(NULL));
@@ -49,17 +49,4 @@ TEST(textgen, test4) {
   unsigned postfI = std::rand() % statetab[Pr].size();
   std::string postf = statetab[Pr][postfI];
   EXPECT_EQ(postf, "or");
-}
-
-TEST(textgen, test5) {
-  std::map<prefix, std::vector<std::string>> statetab;
-  prefix Pr;
-  Pr.push_back("To");
-  Pr.push_back("be");
-  statetab[Pr].push_back("or");
-  statetab[Pr].push_back("and");
-  statetab[Pr].push_back("for");
-  unsigned postfI = std::rand() % statetab[Pr].size();
-  std::string postf = statetab[Pr][postfI];
-  EXPECT_NE(find(statetab[Pr].begin(), statetab[Pr].end(), postf, statetab[Pr].end());
 }
