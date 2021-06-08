@@ -21,7 +21,7 @@ TEST(textgen, test2) {
   srand(time(NULL));
   std::map<prefix, std::vector<std::string>> statetab;
   fulfilStatetab(statetab, "text10.txt");
-  EXPECT_EQ(statetab.size(), 10);
+  EXPECT_EQ(statetab.size(), 0);
 }
 TEST(textgen, test3) {
   srand(time(NULL));
