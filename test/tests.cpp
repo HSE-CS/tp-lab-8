@@ -30,7 +30,7 @@ TEST(Test, Test4) {
     pref.push_back("def");
     pref.push_back("ghi");
     pref.pop_front();
-    EXPECT_EQ("ghi", pref.at(0));
+    EXPECT_EQ("def", pref.at(0));
 }
 
 TEST(Test, Test5) {
