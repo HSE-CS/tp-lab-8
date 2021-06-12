@@ -6,7 +6,7 @@ TEST(textgen, test1) {
 	TextGen text1;
 	text1.setPath("src/input.txt");
 	text1.ReadText();
-	EXPECT_EQ(37, text1.getCount());
+	EXPECT_EQ(73, text1.getCount());
 }
 
 TEST(textgen, test2) {
