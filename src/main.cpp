@@ -4,6 +4,6 @@
 
 int main() {
   createStateTab("../include/text.txt");
-  std::cout << makeText << std::endl;
+  std::cout << makeText() << std::endl;
   return 0;
 }

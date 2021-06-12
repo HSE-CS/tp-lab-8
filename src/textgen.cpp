@@ -2,6 +2,8 @@
 
 #include "../include/textgen.h"
 
+std::map<prefix, std::vector<std::string>> statetab;
+
 void createStateTab(std::string _filename) {
   std::ifstream inpit_file(_filename);
   std::string str;
