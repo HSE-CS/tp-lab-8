@@ -26,7 +26,7 @@ void text_generating(std::string &outputFile) {
   out << out_str;
 }
 
-void add_to_state_tab(prefix &pr, std::string &s, std::string file_name) {
+void add_to_state_tab(prefix &pr, std::string file_name) {
   std::ofstream in(file_name);
   prefix pref;
   std::string buf;

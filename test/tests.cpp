@@ -4,5 +4,5 @@
 
 TEST(textgen, test1) {
 
-  EXPECT_EQ();
+  EXPECT_EQ(  );
 }
