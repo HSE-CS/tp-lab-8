@@ -14,8 +14,8 @@
 typedef std::deque<std::string> prefix;
 extern std::map<prefix, std::vector<std::string>> statetab;
 
-const size_t NPREF = 2;
-const size_t MAXGEN = 1000;
+const int NPREF = 2;
+const int MAXGEN = 1000;
 
 void createStateTab(std::string _filename);
 std::string makeText();

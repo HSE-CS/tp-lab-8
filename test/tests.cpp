@@ -25,12 +25,12 @@ TEST(lab8, test2) {
     words.push_back(text + " ");
   }
   words.back() += "\n";
-  while (words.size() >= NPREF) {
+  while (words.size() > NPREF) {
     prefix pref;
     for (size_t i = 0; i < NPREF; i++) {
       pref.push_back(words[i]);
     }
-    statetab[pref].push_back(words[NPREF - 1]);
+    statetab[pref].push_back(words[NPREF]);
     words.pop_front();
   }
   std::map<prefix, std::vector<std::string>> test_tab = {
