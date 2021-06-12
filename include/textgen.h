@@ -17,7 +17,7 @@ private:
     std::vector<std::string> words;
     typedef std::deque<std::string> prefix;
     std::map<prefix, std::vector<std::string>> postab;
-    const int NPREF = 1;
+    const int NPREF = 2;
     const int MAXGEN = 3000;
 public:
     void CreateTable(std::string text);
