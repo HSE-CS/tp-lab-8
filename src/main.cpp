@@ -2,4 +2,8 @@
 
 #include "../include/textgen.h"
 
-int main() { return 0; }
+int main() {
+  createStateTab("../include/text.txt");
+  std::cout << makeText << std::endl;
+  return 0;
+}

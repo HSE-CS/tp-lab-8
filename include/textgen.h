@@ -4,14 +4,20 @@
 
 #include <deque>
 #include <fstream>
+#include <iostream>
 #include <map>
+#include <random>
+#include <sstream>
 #include <string>
 #include <vector>
 
 typedef std::deque<std::string> prefix;
 std::map<prefix, std::vector<std::string>> statetab;
 
-const int NPREF = 2;
-const int MAXGEN = 1000;
+const size_t NPREF = 2;
+const size_t MAXGEN = 1000;
+
+void createStateTab(std::string _filename);
+std::string makeText();
 
 #endif  // INCLUDE_TEXTGEN_H_
