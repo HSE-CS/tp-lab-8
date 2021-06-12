@@ -28,7 +28,7 @@ TEST(lab8, test2) {
   while (words.size() >= NPREF) {
     prefix pref;
     for (size_t i = 0; i < NPREF; i++) {
-      pref.push_back(words.front());
+      pref.push_back(words[i]);
     }
     statetab[pref].push_back(words[NPREF - 1]);
     words.pop_front();
@@ -36,7 +36,7 @@ TEST(lab8, test2) {
   std::map<prefix, std::vector<std::string>> test_tab = {
       {{"All ", "our "}, {"products "}},
       {{"our ", "products "}, {"are"}},
-      {{"products ", "are "}, {"unique. "}}};
+      {{"products ", "are "}, {"unique. \n"}}};
   EXPECT_EQ(test_tab, statetab);
 }
 

@@ -24,10 +24,13 @@ void createStateTab(std::string _filename) {
   while (words.size() >= NPREF) {
     prefix pref;
     for (size_t i = 0; i < NPREF; i++) {
-      pref.push_back(words.front());
+      pref.push_back(words[i]);
     }
     statetab[pref].push_back(words[NPREF - 1]);
     words.pop_front();
+  }
+  for (const auto& item : statetab) {
+    std::cout << item.first[0] << " " << item.first[1] << std::endl;
   }
 }
 
