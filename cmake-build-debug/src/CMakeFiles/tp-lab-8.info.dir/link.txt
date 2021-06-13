@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/tp-lab-8.info.dir/main.cpp.o  -o tp-lab-8.info -Wl,-rpath,/Users/egorkhorev/Documents/TECH/tp-lab-8/cmake-build-debug/src libtp-lab-8.dylib -lpthread 

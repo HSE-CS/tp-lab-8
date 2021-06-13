@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/textgen.h
+iostream
+-
+deque
+-
+vector
+-
+map
+-
+cstring
+-
+string
+-
+
+/Users/egorkhorev/Documents/TECH/tp-lab-8/src/textgen.cpp
+random
+-
+fstream
+-
+textgen.h
+/Users/egorkhorev/Documents/TECH/tp-lab-8/src/textgen.h
+
