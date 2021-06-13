@@ -1,12 +1,12 @@
 // Copyright Kasyanov 2021
 
+#include "../include/textgen.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 #include <random>
 #include <ctime>
-#include "textgen.cpp"
 
 int main() {
     srand(time(0));
