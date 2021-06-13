@@ -13,7 +13,7 @@ int main() {
     }
     input.close();
     createTable(output);
-    std::string result = createTet();
+    std::string result = createText();
     std::cout << result << std::endl;
     return 0;
 }
