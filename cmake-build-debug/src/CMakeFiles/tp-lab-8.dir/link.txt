@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++ -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -dynamiclib -Wl,-headerpad_max_install_names  -o libtp-lab-8.dylib -install_name @rpath/libtp-lab-8.dylib CMakeFiles/tp-lab-8.dir/textgen.cpp.o -lpthread 
