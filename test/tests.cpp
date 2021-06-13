@@ -15,10 +15,10 @@ EXPECT_EQ(2, (tab.begin()->first).size());
 TEST(addtable, TEST2) {
 std::map<prefix, std::vector<std::string>> tab;
 AddTable("src/input.txt", &tab);
-EXPECT_EQ("- as", tab.begin()->first[0] + " " + tab.begin()->first[1]);
+EXPECT_EQ("20 metres", tab.begin()->first[0] + " " + tab.begin()->first[1]);
 }
 
-TEST(GenerateTextTableTest, TEST3) {
+TEST(generatetext, TEST3) {
 std::map<prefix, std::vector<std::string>> tab;
 AddTable("src/input.txt", &tab);
 auto str = Text(&tab);
@@ -35,7 +35,7 @@ bool isInTable = (tab.find(testPrefix) != tab.end()) ? true : false;
 EXPECT_EQ(false, isInTable);
 }
 
-TEST(GenerateTextTableTest, TEST5) {
+TEST(generatetext, TEST5) {
 std::map<prefix, std::vector<std::string>> tab;
 AddTable("src/input.txt", &tab);
 std::ifstream input("src/output.txt");
