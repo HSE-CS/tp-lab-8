@@ -35,7 +35,7 @@ TEST(lab8, test2) {
   }
   std::map<prefix, std::vector<std::string>> test_tab = {
       {{"All ", "our "}, {"products "}},
-      {{"our ", "products "}, {"are"}},
+      {{"our ", "products "}, {"are "}},
       {{"products ", "are "}, {"unique. \n"}}};
   EXPECT_EQ(test_tab, statetab);
 }
