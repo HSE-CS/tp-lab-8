@@ -63,7 +63,7 @@
 
 ```c++
 typedef deque<string> prefix;          // очередь префиксов
-map<prefix, vector<string> > statetab; // префикс-суффиксы
+map<prefix, vector<string> > tab; // префикс-суффиксы
 ```
 
 В качестве параметров необходимо задать размер префикса (в словах) и объем генерируемого текста:
