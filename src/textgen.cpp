@@ -71,7 +71,7 @@ std::string createText() {
         for (int i = 0; i < NPREF - 1; i++) {
             p[i] = p[i + 1];
         }
-        p[NPREF - 1] = tmp
+        p[NPREF - 1] = tmp;
     }
     return result;
 }
