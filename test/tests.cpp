@@ -11,7 +11,7 @@ TEST(textgen, test1) {
 TEST(textgen, test2) {
   prefix pref;
   pref.push_back("abcd");
-  pref.push_back("");
+  pref.push_back("abcdef");
   EXPECT_EQ(2, pref.size());
 }
 
