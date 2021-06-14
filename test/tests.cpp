@@ -26,7 +26,7 @@ TEST(tests, test4) {
     p.push_front("Hello");
     p.push_front("World");
     p.pop_back();
-    EXPECT_EQ("Hello", p[0]);
+    EXPECT_EQ("World", p[0]);
 }
 
 TEST(tests, test5) {
