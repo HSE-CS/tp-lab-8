@@ -5,7 +5,7 @@
 
 TEST(tests, test1) {
     prefix p;
-    p.push_front("Hello")
+    p.push_front("Hello");
     EXPECT_EQ(1, p.size());
 }
 
