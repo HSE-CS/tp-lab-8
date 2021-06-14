@@ -11,7 +11,7 @@ TEST(textgen, test1) {
 TEST(textgen, test2) {
   prefix pref;
   pref.push_back("abcd");
-  pref.push_back("abcdef");
+  pref.push_back("");
   EXPECT_EQ(2, pref.size());
 }
 
@@ -21,16 +21,17 @@ TEST(textgen, test3) {
   pref.push_back("third");
   EXPECT_EQ("test", pref.at(0));
 }
+
 TEST(textgen, test4) {
   prefix pref;
   pref.push_back("Hello");
   statetab[pref].push_back("World");
-  EXPECT_EQ("World", statetab[pref][0]);
+  EXPECT_EQ(1, statetab[pref].size());
 }
 
 TEST(textgen, test5) {
   prefix pref;
   pref.push_back("Hello");
   statetab[pref].push_back("World");
-  EXPECT_EQ(1, statetab[pref].size());
+  EXPECT_EQ("World", statetab[pref][0]);
 }
